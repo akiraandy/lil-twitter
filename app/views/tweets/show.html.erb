@@ -1,0 +1,11 @@
+<h1>TWEET SHOW PAGE</h1>
+<%= @tweet.body %>
+<% if @tweet.comments %>
+    <ul>
+  <% @tweet.comments.each do |comment| %>
+    <li><%= comment.body %></li>
+  <% end %>
+    </ul>
+<% end %>
+
+<%= link_to "New Comment", new_tweet_comment_path(@tweet), class: "btn btn-primary" %>

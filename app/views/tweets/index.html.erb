@@ -1,0 +1,7 @@
+<ul>
+  <% @tweets.each do |tweet| %>
+    <li><%= link_to tweet.body, tweet_path(tweet), class: "btn btn-primary" %></li>
+  <% end %>
+</ul>
+
+<%= link_to "New Tweet", new_tweet_path, class: "btn btn-primary" %>
