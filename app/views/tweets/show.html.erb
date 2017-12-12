@@ -1,8 +1,16 @@
-<h1>TWEET SHOW PAGE</h1>
-<%= @tweet.body %>
-<%= link_to "Edit Tweet", edit_tweet_path(@tweet), class: "btn btn-primary" %>
-<ul>
-  <%= render(partial: 'comments/comment', collection: @tweet.comments) %>
-</ul>
+<div class="container">
+  <div class="card">
 
-<%= link_to "New Comment", new_tweet_comment_path(@tweet), class: "btn btn-primary" %>
+    <div class="card-block text-center">
+      <small class="card-title">Submitted <%= time_ago_in_words(@tweet.created_at) %> ago by <%= @tweet.user.email %></small>
+      <p class="card-text"><%= @tweet.body %></p>
+      <% if @tweet.user == current_user %>
+        <%= link_to "Edit Tweet", edit_tweet_path(@tweet), class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="text-center">
+  <%= render(partial: 'comments/comment', collection: @tweet.comments) %>
+  <%= link_to "New Comment", new_tweet_comment_path(@tweet), class: "btn btn-primary" %>
+</div>

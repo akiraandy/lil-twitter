@@ -14,6 +14,25 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    @comment = Comment.find_by_id(params[:id])
+  end
+
+  def update
+    @comment = Comment.find_by_id(params[:id])
+    if @comment.update(comment_params)
+      redirect_to tweets_path
+    else
+      render "edit"
+    end
+  end
+
+  def destroy
+    @comment = Comment.find_by_id(params[:id])
+    @comment.update(body: "**Comment deleted**")
+    redirect_to tweets_path
+  end
+
   private
 
   def comment_params

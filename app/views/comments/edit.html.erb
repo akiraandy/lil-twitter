@@ -1,0 +1,7 @@
+<h1>Edit Comment</h1>
+
+<%= form_for @comment do |f| %>
+    <%= f.text_area :body, placeholder: @comment.body %><br/>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit "Submit Comment"  %>
+    <% end %>

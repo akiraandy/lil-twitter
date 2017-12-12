@@ -23,6 +23,9 @@
           <%= link_to('Login', new_user_session_path, class:"nav-link") %>
           </li>
         <% end %>
+        <li class="nav-item">
+          <%= link_to "Global Tweets", all_tweets_path, class: "nav-link" %>
+        </li>
       </ul>
     </nav>
     <%= yield %>
