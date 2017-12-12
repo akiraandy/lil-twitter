@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    @comment.require(:comment).permit(:body)
+    params.require(:comment).permit(:body)
   end
 
   def find_commentable
