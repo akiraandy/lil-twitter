@@ -7,17 +7,17 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @commentable.comments.new comment_params
-    if @comment.save
-      redirect_to :back
+    if @comment.save!
+      redirect_to root_path
     else
-      redirect_to :back
+      redirect_to root_path
     end
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:body)
+    params.require(:comment).permit(:body, :user_id)
   end
 
   def find_commentable
