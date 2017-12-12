@@ -1,5 +1,6 @@
 <h1>TWEET SHOW PAGE</h1>
 <%= @tweet.body %>
+<%= link_to "Edit Tweet", edit_tweet_path(@tweet), class: "btn btn-primary" %>
 <ul>
   <%= render(partial: 'comments/comment', collection: @tweet.comments) %>
 </ul>

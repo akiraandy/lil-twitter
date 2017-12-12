@@ -1,8 +1,9 @@
+<h1>Edit Tweet</h1>
 <div class="row align-items-center justify-content-center">
     <div>
       <%= form_for @tweet, class: "col" do |f| %>
         <%= render "shared/errors", object: @tweet %>
-        <%= f.text_field :body %>
+        <%= f.text_field :body, placeholder: @tweet.body %>
         <%= f.submit %>
       <% end %>
     </div>

@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @commentable.comments.new comment_params
-    if @comment.save!
+    if @comment.save
       redirect_to root_path
     else
       redirect_to root_path

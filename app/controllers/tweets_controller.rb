@@ -16,11 +16,31 @@ class TweetsController < ApplicationController
     def create
       @tweet = Tweet.create(tweet_params)
       current_user.tweets << @tweet
-      if @tweet.save!
+      if @tweet.save
         redirect_to tweets_path
       else
         render new_tweet_path
       end
+    end
+
+    def update
+      @tweet = Tweet.find_by_id(params[:id])
+      if @tweet.update(tweet_params)
+        redirect_to @tweet
+      else
+        render "edit"
+      end
+    end
+
+    def edit
+      @tweet = Tweet.find_by_id(params[:id])
+    end
+
+
+    def destroy
+      @tweet = Tweet.find_by_id(params[:id])
+      @tweet.destroy
+      redirect_to tweets_path
     end
 
     private
