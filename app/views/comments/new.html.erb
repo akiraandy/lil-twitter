@@ -1,6 +1,10 @@
-<%= form_for @comment, url: {action: "create"} do |f| %>
-  <%= render "shared/errors", object: @comment %>
-  <%= f.text_field :body %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <div class="row align-items-center justify-content-center">
+    <%= form_for @comment, url: {action: "create"} do |f| %>
+      <%= render "shared/errors", object: @comment %>
+      <%= f.text_area :body %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.submit class:"btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

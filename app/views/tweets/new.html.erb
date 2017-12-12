@@ -2,8 +2,8 @@
     <div>
       <%= form_for @tweet, class: "col" do |f| %>
         <%= render "shared/errors", object: @tweet %>
-        <%= f.text_field :body %>
-        <%= f.submit %>
+        <%= f.text_area :body %>
+        <%= f.submit class: "btn btn-primary"%>
       <% end %>
     </div>
 </div>

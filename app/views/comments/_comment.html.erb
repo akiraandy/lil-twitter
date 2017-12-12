@@ -1,19 +1,23 @@
-<li>
-  <%= comment.body %> -
-  <small>Submitted <%= time_ago_in_words(comment.created_at) %> ago by <%= comment.user.email %></small>
+<li style="list-style: none">
+  <div class="row" style="margin: 20px">
+    <div class="col">
+      <%= comment.body %> -
+      <small>Submitted <%= time_ago_in_words(comment.created_at) %> ago by <%= comment.user.email %></small>
+    </div>
+  </div>
+    <% if comment.user == current_user  && comment.body != "**Comment deleted**" %>
+      <%= link_to "Edit Comment", edit_comment_path(comment), class: "btn btn-primary" %>
+      <% if comment.body != "**Comment deleted**" %>
+        <%= link_to 'Delete Comment', comment,  method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-primary" %>
+      <% end %>
+    <% end %>
+
   <% if comment.body != "**Comment deleted**" %>
     <%= form_for [comment, Comment.new] do |f| %>
         <%= f.text_area :body, placeholder: "Add a comment..." %><br/>
         <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.submit "Submit Comment"  %>
+        <%= f.submit "Submit Comment", class: "btn btn-primary" %>
         <% end %>
-  <% end %>
-
-  <% if comment.user == current_user  && comment.body != "**Comment deleted**" %>
-    <%= link_to "Edit Comment", edit_comment_path(comment), class: "btn btn-primary" %>
-    <% if comment.body != "**Comment deleted**" %>
-      <%= link_to 'Delete Comment', comment,  method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-primary" %>
-    <% end %>
   <% end %>
 
   <ul style="list-style: none">

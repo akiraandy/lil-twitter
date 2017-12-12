@@ -1,16 +1,20 @@
 <div class="container">
   <div class="card">
-
     <div class="card-block text-center">
-      <small class="card-title">Submitted <%= time_ago_in_words(@tweet.created_at) %> ago by <%= @tweet.user.email %></small>
       <p class="card-text"><%= @tweet.body %></p>
+      <small class="card-title">Submitted <%= time_ago_in_words(@tweet.created_at) %> ago by <%= @tweet.user.email %></small>
       <% if @tweet.user == current_user %>
         <%= link_to "Edit Tweet", edit_tweet_path(@tweet), class: "btn btn-primary" %>
+        <%= link_to 'Delete Tweet', @tweet,  method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-primary" %>
       <% end %>
     </div>
   </div>
 </div>
-<div class="text-center">
-  <%= render(partial: 'comments/comment', collection: @tweet.comments) %>
-  <%= link_to "New Comment", new_tweet_comment_path(@tweet), class: "btn btn-primary" %>
+<div class="row text-center">
+  <div class="col" style="margin-top: 20px">
+    <h3>Comments: </h3>
+    <%= render(partial: 'comments/comment', collection: @tweet.comments) %>
+    <%= link_to "New Comment", new_tweet_comment_path(@tweet), class: "btn btn-primary" %>
+  </div>
+
 </div>
