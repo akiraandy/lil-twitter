@@ -1,0 +1,15 @@
+<div class="container">
+  <ul class="list-group">
+    <%= link_to "New Tweet", new_tweet_path, class: "btn btn-primary" %>
+    <% @tweets.each do |tweet| %>
+    <div class="row">
+      <div class="col">
+        <%= link_to tweet.body, tweet_path(tweet), class:"list-group-item"%>
+      </div>
+      <div class="row">
+        <%= link_to 'Delete Tweet', tweet,  method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-primary" %>
+      </div>
+    </div>
+    <% end %>
+  </ul>
+</div>

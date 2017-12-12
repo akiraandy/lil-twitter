@@ -1,0 +1,9 @@
+<div class="row align-items-center justify-content-center">
+    <div>
+      <%= form_for @tweet, class: "col" do |f| %>
+        <%= render "shared/errors", object: @tweet %>
+        <%= f.text_area :body %>
+        <%= f.submit class: "btn btn-primary"%>
+      <% end %>
+    </div>
+</div>

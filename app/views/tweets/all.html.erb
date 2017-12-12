@@ -1,0 +1,12 @@
+<div class="container">
+  <ul class="list-group">
+    <% @tweets.each do |tweet| %>
+    <div class="row list-group-item">
+
+      <%= link_to tweet.body, tweet_path(tweet), class:"col-md"%>
+      <span class="col-md">Author: <%= tweet.user.email %></span>
+      <span class="col-md">Submitted: <%= time_ago_in_words(tweet.created_at) %> ago</span>
+    </div>
+    <% end %>
+  </ul>
+</div>
