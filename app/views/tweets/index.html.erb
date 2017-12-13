@@ -1,13 +1,14 @@
 <div class="container">
+  <h1 class="text-center" style="border-bottom: 1px solid grey">Your Tweets</h1>
   <ul class="list-group">
-    <%= link_to "New Tweet", new_tweet_path, class: "btn btn-primary" %>
     <% @tweets.each do |tweet| %>
     <div class="row">
       <div class="col">
         <%= link_to tweet.body, tweet_path(tweet), class:"list-group-item"%>
       </div>
       <div class="row">
-        <%= link_to 'Delete Tweet', tweet,  method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-primary" %>
+        <%= link_to 'Delete Tweet', tweet,  method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+        <%= link_to "Edit Tweet", edit_tweet_path(tweet), class: "btn btn-primary" %>
       </div>
     </div>
     <% end %>
